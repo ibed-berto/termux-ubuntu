@@ -43,9 +43,9 @@ fi
 cur=`pwd`
 mkdir -p $directory
 cd $directory
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Decompressing ubuntu rootfs, please wait...\n"
-tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang mengextract ubuntu rootfs, please wait...\n"
+proot -link2symlink tar -xf $cur/ubuntu.tar.gz --exclude='dev'||:
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di extract!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
 printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1" > etc/resolv.conf
 stubs=()
