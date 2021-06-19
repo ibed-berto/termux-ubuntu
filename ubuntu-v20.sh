@@ -229,9 +229,9 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
-command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
-command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
-command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
+command+=" -b ${cur}/${directory}/proc/fakethings/stat:/proc/stat"
+command+=" -b ${cur}/${directory}/proc/fakethings/vmstat:/proc/vmstat"
+command+=" -b ${cur}/${directory}/proc/fakethings/version:/proc/version"
 command+=" -b /data/data/com.termux"
 command+=" -b /:/host-rootfs"
 command+=" -b /sdcard"
@@ -252,22 +252,22 @@ else
 fi
 EOM
 
-mkdir -p ubuntu20-fs/var/tmp
-rm -rf ubuntu20-fs/usr/local/bin/*
+mkdir -p $directory/var/tmp
+rm -rf $directory/usr/local/bin/*
 
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O ubuntu20-fs/root/.profile.1
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O $directory/root/.profile.1
 cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $directory/root/.profile.1
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vnc -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P ubuntu20-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vnc -P $directory/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P $directory/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P $directory/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P $directory/usr/local/bin
 
-chmod +x ubuntu20-fs/root/.bash_profile
-chmod +x ubuntu20-fs/root/.profile
-chmod +x ubuntu20-fs/usr/local/bin/vnc
-chmod +x ubuntu20-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-start
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-stop
+chmod +x $directory/root/.bash_profile
+chmod +x $directory/root/.profile
+chmod +x $directory/usr/local/bin/vnc
+chmod +x $directory/usr/local/bin/vncpasswd
+chmod +x $directory/usr/local/bin/vncserver-start
+chmod +x $directory/usr/local/bin/vncserver-stop
 touch $directory/root/.hushlogin
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
