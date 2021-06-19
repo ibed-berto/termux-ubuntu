@@ -6,7 +6,7 @@ install1 () {
 directory=ubuntuV20-fs
 if [ -d "$directory" ];then
 first=1
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;227m[WARNING]:\e[0m \x1b[38;5;87m Lewatkan unduhan dan ekstrak file\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \e[32;5m[WARNING]:\e[0m \x1b[38;5;87m Lewatkan unduhan dan ekstrak file\n"
 elif [ -z "$(command -v proot)" ];then
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Proot belum terinstall. Silahkan install proot.\n"
 printf "\e[0m"
@@ -21,7 +21,7 @@ if [ -f "ubuntu.tar.gz" ];then
 rm -rf ubuntu.tar.gz
 fi
 if [ ! -f "ubuntu.tar.gz" ];then
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang mendownload ubuntu rootfs, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang mendownload ubuntu rootfs, please wait...\n"
 ARCHITECTURE=$(dpkg --print-architecture)
 case "$ARCHITECTURE" in
 aarch64) ARCHITECTURE=arm64;;
@@ -36,32 +36,32 @@ esac
 
 
 wget https://github.com/ibed-berto/termux-ubuntu/raw/master/ubuntuV20/focal-${ARCHITECTURE}.tar.gz -q -O ubuntu.tar.gz 
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Download selesai!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Download selesai!\n"
 
 fi
 
 cur=`pwd`
 mkdir -p $directory
 cd $directory
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Decompressing ubuntu rootfs, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Decompressing ubuntu rootfs, please wait...\n"
 tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
 printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1" > etc/resolv.conf
 stubs=()
 stubs+=('usr/bin/groups')
 for f in ${stubs[@]};do
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang menulis ulang stubs, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang menulis ulang stubs, please wait...\n"
 echo -e "#!/bin/sh\nexit" > "$f"
 done
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Stubs berhasil di tulis ulang!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Stubs berhasil di tulis ulang!\n"
 cd $cur
 
 fi
 
 mkdir -p ubuntuV20-binds
 bin=startubuntu-v20.sh
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
@@ -101,17 +101,17 @@ else
     \$command -c "\$com"
 fi
 EOM
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang memperbaiki shebang dari startubuntu.sh, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang dari startubuntu.sh, please wait...\n"
 termux-fix-shebang $bin
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Perbaikan shebang startubuntu.sh selesai! \n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Perbaikan shebang startubuntu.sh selesai! \n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembuatan startubuntu.sh! please wait...\n"
 chmod +x $bin
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembuatan startubuntu.sh telah berhasil\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan startubuntu.sh telah berhasil\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \x1b[32:5m./startubuntu-v20.sh\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v20.sh\n"
 printf "\e[0m"
 
 }
