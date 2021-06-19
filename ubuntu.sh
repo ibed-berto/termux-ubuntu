@@ -87,7 +87,7 @@ fi
 
 if [ ! -f "${cur}/${directory}/proc/fakethings/version" ]; then
 	cat <<- EOF > "${cur}/${directory}/proc/fakethings/version"
-	Linux version 5.4.0-faked (ibed-berto) (gcc version 4.9.x (Ibed-berto /proc/version) ) 
+	ersion 5.4.0-faked (ibed-berto) (gcc version 4.9.x (Ibed-berto /proc/version) ) 
 	EOF
 fi
 
