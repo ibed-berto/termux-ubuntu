@@ -73,15 +73,15 @@ command="proot"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $directory"
-if [ -n "\$(ls -A ubuntu-binds)" ]; then
-    for f in ubuntu-binds/* ;do
+if [ -n "\$(ls -A ubuntuV20-binds)" ]; then
+    for f in ubuntuV20-binds/* ;do
       . \$f
     done
 fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
-command+=" -b ubuntu-fs/tmp:/dev/shm"
+command+=" -b ubuntuV20-fs/tmp:/dev/shm"
 command+=" -b /data/data/com.termux"
 command+=" -b /:/host-rootfs"
 command+=" -b /sdcard"
@@ -102,12 +102,12 @@ else
 fi
 EOM
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang dari startubuntu.sh, please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
 termux-fix-shebang $bin
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Perbaikan shebang startubuntu.sh selesai! \n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembuatan startubuntu.sh! please wait...\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Perbaikan shebang selesai! \n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan file bash! please wait...\n"
 chmod +x $bin
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan startubuntu.sh telah berhasil\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan file bash telah berhasil\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
