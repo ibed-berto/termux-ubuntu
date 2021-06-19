@@ -210,8 +210,7 @@ cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
 command="proot"
-## uncomment following line if you are having FATAL: kernel too old message.
-#command+=" -k 4.14.81"
+command+=" --kill-on-exit"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $directory"
@@ -223,6 +222,7 @@ fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
+command+=" -b /data"
 command+=" -b ubuntuV20-fs/tmp:/dev/shm"
 command+=" -b /proc/self/fd/2:/dev/stderr"
 command+=" -b /proc/self/fd/1:/dev/stdout"
@@ -232,13 +232,14 @@ command+=" -b /proc/self/fd:/dev/fd"
 command+=" -b ${cur}/${directory}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${directory}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${directory}/proc/fakethings/version:/proc/version"
-command+=" -b /data/data/com.termux"
+command+=" -b /data/data/com.termux/files/home:/root"
 command+=" -b /:/host-rootfs"
 command+=" -b /sdcard"
 command+=" -b /storage"
 command+=" -b /mnt"
 command+=" -w /root"
 command+=" /usr/bin/env -i"
+command+=" MOZ_FAKE_NO_SANDBOX=1"
 command+=" HOME=/root"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
 command+=" TERM=\$TERM"
@@ -252,23 +253,6 @@ else
 fi
 EOM
 
-mkdir -p $directory/var/tmp
-rm -rf $directory/usr/local/bin/*
-
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O $directory/root/.profile.1
-cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $directory/root/.profile.1
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vnc -P $directory/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P $directory/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P $directory/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P $directory/usr/local/bin
-
-chmod +x $directory/root/.bash_profile
-chmod +x $directory/root/.profile
-chmod +x $directory/usr/local/bin/vnc
-chmod +x $directory/usr/local/bin/vncpasswd
-chmod +x $directory/usr/local/bin/vncserver-start
-chmod +x $directory/usr/local/bin/vncserver-stop
-touch $directory/root/.hushlogin
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
 termux-fix-shebang $bin
