@@ -59,7 +59,7 @@ cd $cur
 
 fi
 
-mkdir -p ubuntu-binds
+mkdir -p ubuntuV20-binds
 bin=startubuntu-v20.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 cat > $bin <<- EOM
@@ -111,14 +111,14 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32:5m./startubuntu-v20.sh\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \x1b[32:5m./startubuntu-v20.sh\n"
 printf "\e[0m"
 
 }
 if [ "$1" = "-y" ];then
 install1
 elif [ "$1" = "" ];then
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;127m[QUESTION]:\e[0m \x1b[38;5;87m Apakah anda ingin mengintall Ubuntu? Default Y [Y/n] "
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Apakah anda ingin mengintall Ubuntu? Default Y [Y/n] "
 
 read cmd1
 if [ "$cmd1" = "y" ];then
