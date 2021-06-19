@@ -48,7 +48,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m
 tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
-printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\n" > etc/resolv.conf
+printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1" > etc/resolv.conf
 stubs=()
 stubs+=('usr/bin/groups')
 for f in ${stubs[@]};do
