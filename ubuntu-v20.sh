@@ -262,7 +262,7 @@ chmod +x $bin
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan file bash telah berhasil\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
-rm -rf ubuntuV20.sh
+rm -rf ubuntu-V20.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v20.sh\n"
 printf "\e[0m"
