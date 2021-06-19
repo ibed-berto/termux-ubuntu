@@ -3,17 +3,16 @@
 time1="$( date +"%r" )"
 
 install1 () {
-directory=ubuntu-fs
-UBUNTU_VERSION=20.04.2
+directory=ubuntuV20-fs
 if [ -d "$directory" ];then
 first=1
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;227m[WARNING]:\e[0m \x1b[38;5;87m Lewatkan unduhan dan ekstrak file\n"
 elif [ -z "$(command -v proot)" ];then
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Proot do not ready. Please install proot.\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Proot belum terinstall. Silahkan install proot.\n"
 printf "\e[0m"
 exit 1
 elif [ -z "$(command -v wget)" ];then
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Wget do not ready. Please install wget.\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Wget belum terinstall. Silahkan install wget.\n"
 printf "\e[0m"
 exit 1
 fi
@@ -61,7 +60,7 @@ cd $cur
 fi
 
 mkdir -p ubuntu-binds
-bin=startubuntu.sh
+bin=startubuntu-v20.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 cat > $bin <<- EOM
 #!/bin/bash
@@ -112,7 +111,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \x1b[31m./startubuntu.sh\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \x1b[5;32m./startubuntu-v20.sh\n"
 printf "\e[0m"
 
 }
