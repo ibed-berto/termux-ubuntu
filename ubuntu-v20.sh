@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 pkg install wget -y 
-folder=ubuntu-v20-fs
+folder=ubuntu20-fs
 cur=`pwd`
 if [ -d "$folder" ]; then
 	first=1
