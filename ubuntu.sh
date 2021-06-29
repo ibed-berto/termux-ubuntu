@@ -44,7 +44,7 @@ cur=`pwd`
 mkdir -p $directory
 cd $directory
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang mengextract ubuntu rootfs, please wait...\n"
-tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
+proot --link2symlink tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
 cd $cur
 fi
 
