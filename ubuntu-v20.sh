@@ -4,7 +4,7 @@ folder=ubuntu-v20-fs
 cur=`pwd`
 if [ -d "$folder" ]; then
 	first=1
-	echo "skipping downloading"
+	echo "Lewatkan pengunduhan"
 fi
 tarball="ubuntu-v20-rootfs.tar.gz"
 
@@ -12,7 +12,7 @@ termux-setup-storage
 
 if [ "$first" != 1 ];then
 	if [ ! -f $tarball ]; then
-		echo "Download Rootfs, this may take a while base on your internet speed."
+		echo "Sedang mendownload Rootfs ubuntu, Pastikan koneksi internet anda lancar."
 		case `dpkg --print-architecture` in
 		aarch64)
 			archurl="arm64" ;;
@@ -23,14 +23,14 @@ if [ "$first" != 1 ];then
 		x86_64)
 			archurl="amd64" ;;	
 		*)
-			echo "unknown architecture"; exit 1 ;;
+			echo "Architecture perangkat tidak terdeteksi"; exit 1 ;;
 		esac
 		wget "https://github.com/ibed-berto/termux-ubuntu/raw/master/ubuntuV20/focal-${archurl}.tar.gz" -O $tarball
 	fi
 	
 	mkdir -p "$folder"
 	cd "$folder"
-	echo "Decompressing Rootfs, please be patient."
+	echo "Mengekstrak file Rootfs, Mohon bersabar."
 	proot --link2symlink tar -xf ${cur}/${tarball} --exclude=dev||:
 	cd "$cur"
 fi
@@ -62,7 +62,7 @@ fi
 
 if [ ! -f "${cur}/${folder}/proc/fakethings/version" ]; then
 	cat <<- EOF > "${cur}/${folder}/proc/fakethings/version"
-	Linux version 5.4.0-faked (andronix@fakeandroid) (gcc version 4.9.x (Andronix fake /proc/version) ) #1 SMP PREEMPT Sun Sep 13 00:00:00 IST 2020
+	Linux version 5.4.0-faked (ibed-berto) (gcc version 2.1.x (ibed-berto fake /proc/version) ) #1 SMP PREEMPT Sun Jul 13 00:00:00 IST 2021
 	EOF
 fi
 
@@ -175,7 +175,7 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 fi
 
 bin=startubuntu-v20.sh
-echo "writing launch script"
+echo "menjalankan script ubuntu-v20"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
@@ -226,29 +226,29 @@ EOM
 mkdir -p ubuntu-v20-fs/var/tmp
 rm -rf ubuntu-v20-fs/usr/local/bin/*
 
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O ubuntu20-fs/root/.profile.1
+wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/.profile -O ubuntu-v20-fs/root/.profile.1
 cat $folder/root/.profile.1 >> $folder/root/.profile && rm -rf $folder/root/.profile.1
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vnc -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P ubuntu20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vnc -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncpasswd -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-stop -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-start -P ubuntu-v20-fs/usr/local/bin
 
-chmod +x ubuntu20-fs/root/.bash_profile
-chmod +x ubuntu20-fs/root/.profile
-chmod +x ubuntu20-fs/usr/local/bin/vnc
-chmod +x ubuntu20-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-start
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-stop
+chmod +x ubuntu-v20-fs/root/.bash_profile
+chmod +x ubuntu-v20-fs/root/.profile
+chmod +x ubuntu-v20-fs/usr/local/bin/vnc
+chmod +x ubuntu-v20-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu-v20-fs/usr/local/bin/vncserver-start
+chmod +x ubuntu-v20-fs/usr/local/bin/vncserver-stop
 touch $folder/root/.hushlogin
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 echo "nameserver 1.1.1.1" > $folder/etc/resolv.conf
 chmod +x $folder/etc/resolv.conf
-echo "fixing shebang of $bin"
+echo "Memperbaiki shebang of $bin"
 termux-fix-shebang $bin
-echo "making $bin executable"
+echo "Membuat $bin dapat di gunakan"
 chmod +x $bin
-echo "removing image for some space"
+echo "Menghapus file rootfs yang tidak di gunakan"
 rm $tarball
 clear
-echo "You can now launch Ubuntu with the ./${bin} script form next time"
+echo "Penginstallan Ubuntu-v20 telah selesai. Untuk menjalankan ubuntu-v20 ketik perintah ./${bin} "
 bash $bin
