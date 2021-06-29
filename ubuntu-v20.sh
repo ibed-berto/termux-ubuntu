@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 pkg install wget -y 
-folder=ubuntu20-fs
+folder=ubuntu-v20-fs
 cur=`pwd`
 if [ -d "$folder" ]; then
 	first=1
@@ -25,7 +25,7 @@ if [ "$first" != 1 ];then
 		*)
 			echo "Architecture perangkat tidak terdeteksi"; exit 1 ;;
 		esac
-		wget "https://github.com/ibed-berto/termux-ubuntu/raw/master/ubuntuV20/focal-${archurl}.tar.gz" -O $tarball
+		wget "https://github.com/ibed-berto/termux-ubuntu/tree/master/rootfs/focal-${archurl}.tar.gz" -O $tarball
 	fi
 	
 	mkdir -p "$folder"
