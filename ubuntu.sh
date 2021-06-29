@@ -44,7 +44,16 @@ cur=`pwd`
 mkdir -p $directory
 cd $directory
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang mengextract ubuntu rootfs, please wait...\n"
-proot --link2symlink tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
+tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
+printf "127.0.0.1 localhost localhost" > $folder etc/resolv.conf
+printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1" > etc/resolv.conf
+stubs=()
+stubs+=('usr/bin/groups')
+for f in ${stubs[@]};do
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang menulis ulang stubs, please wait...\n"
+echo -e "#!/bin/sh\nexit" > "$f"
+done
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Stubs berhasil di tulis ulang!\n"
 cd $cur
 fi
 
@@ -241,30 +250,6 @@ else
 fi
 EOM
 
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
-
-mkdir -p ubuntuV20-fs/var/tmp
-rm -rf ubuntuV20-fs/usr/local/bin/*
-
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/.profile -O ubuntuV20-fs/root/.profile.1
-cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $directory/root/.profile.1
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vnc -P ubuntuV20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncpasswd -P ubuntuV20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-stop -P ubuntuV20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-start -P ubuntuV20-fs/usr/local/bin
-
-chmod +x ubuntuV20-fs/root/.bash_profile
-chmod +x ubuntuV20-fs/root/.profile
-chmod +x ubuntuV20-fs/usr/local/bin/vnc
-chmod +x ubuntuV20-fs/usr/local/bin/vncpasswd
-chmod +x ubuntuV20-fs/usr/local/bin/vncserver-start
-chmod +x ubuntuV20-fs/usr/local/bin/vncserver-stop
-touch $directory/root/.hushlogin
-
-echo "127.0.0.1 localhost localhost" > $directory/etc/hosts
-echo "nameserver 1.1.1.1\nnameserver 8.8.4.4\nnameserver 8.8.8.8" > $directory/etc/resolv.conf
-chmod +x $director/etc/resolv.conf
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Memperbaiki resolv.conf selesai \n"
 
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
