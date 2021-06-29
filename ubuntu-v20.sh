@@ -195,7 +195,7 @@ command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
 command+=" -b /data"
-command+=" -b ubuntu20-fs/root:/dev/shm"
+command+=" -b ubuntu-20-fs/root:/dev/shm"
 command+=" -b /proc/self/fd/2:/dev/stderr"
 command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
@@ -241,7 +241,7 @@ chmod +x ubuntu-v20-fs/usr/local/bin/vncserver-start
 chmod +x ubuntu-v20-fs/usr/local/bin/vncserver-stop
 touch $folder/root/.hushlogin
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
-echo "nameserver 1.1.1.1" > $folder/etc/resolv.conf
+echo "nameserver 1.1.1.1\nnmeserver 8.8.8.8\nnameserver 8.8.4.4" > $folder/etc/resolv.conf
 chmod +x $folder/etc/resolv.conf
 echo "Memperbaiki shebang of $bin"
 termux-fix-shebang $bin
