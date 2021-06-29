@@ -1,12 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
 pkg install wget -y 
-folder=ubuntu20-fs
+folder=ubuntu-v20-fs
 cur=`pwd`
 if [ -d "$folder" ]; then
 	first=1
 	echo "skipping downloading"
 fi
-tarball="ubuntu20-rootfs.tar.gz"
+tarball="ubuntu-v20-rootfs.tar.gz"
 
 termux-setup-storage
 
@@ -25,7 +25,7 @@ if [ "$first" != 1 ];then
 		*)
 			echo "unknown architecture"; exit 1 ;;
 		esac
-		wget "https://github.com/AndronixApp/AndronixOrigin/raw/master/Rootfs/Ubuntu20/focal-${archurl}.tar.gz" -O $tarball
+		wget "https://github.com/ibed-berto/termux-ubuntu/raw/master/ubuntuV20/focal-${archurl}.tar.gz" -O $tarball
 	fi
 	
 	mkdir -p "$folder"
@@ -35,7 +35,7 @@ if [ "$first" != 1 ];then
 	cd "$cur"
 fi
 
-mkdir -p ubuntu20-binds
+mkdir -p ubuntu-v20-binds
 mkdir -p ${folder}/proc/fakethings
 
 if [ ! -f "${cur}/${folder}/proc/fakethings/stat" ]; then
@@ -174,7 +174,7 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-bin=start-ubuntu20.sh
+bin=startubuntu-v20.sh
 echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
@@ -186,8 +186,8 @@ command+=" --kill-on-exit"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $folder"
-if [ -n "\$(ls -A ubuntu20-binds)" ]; then
-    for f in ubuntu20-binds/* ;do
+if [ -n "\$(ls -A ubuntu-v20-binds)" ]; then
+    for f in ubuntu-v20-binds/* ;do
       . \$f
     done
 fi
@@ -223,8 +223,8 @@ else
 fi
 EOM
 
-mkdir -p ubuntu20-fs/var/tmp
-rm -rf ubuntu20-fs/usr/local/bin/*
+mkdir -p ubuntu-v20-fs/var/tmp
+rm -rf ubuntu-v20-fs/usr/local/bin/*
 
 wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O ubuntu20-fs/root/.profile.1
 cat $folder/root/.profile.1 >> $folder/root/.profile && rm -rf $folder/root/.profile.1
