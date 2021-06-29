@@ -226,12 +226,12 @@ EOM
 mkdir -p ubuntu-v20-fs/var/tmp
 rm -rf ubuntu-v20-fs/usr/local/bin/*
 
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/.profile -O ubuntu-v20-fs/root/.profile.1
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/.profile -O ubuntu-v20-fs/root/.profile.1
 cat $folder/root/.profile.1 >> $folder/root/.profile && rm -rf $folder/root/.profile.1
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vnc -P ubuntu-v20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncpasswd -P ubuntu-v20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-stop -P ubuntu-v20-fs/usr/local/bin
-wget -q https://github.com/ibed-berto/termux-ubuntu/ubuntu/vncserver-start -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vnc -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vncpasswd -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vncserver-stop -P ubuntu-v20-fs/usr/local/bin
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vncserver-start -P ubuntu-v20-fs/usr/local/bin
 
 chmod +x ubuntu-v20-fs/root/.bash_profile
 chmod +x ubuntu-v20-fs/root/.profile
