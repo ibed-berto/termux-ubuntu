@@ -4,8 +4,8 @@ pkg update && pkg upgrade -y
 pkg install proot -y
 pkg install wget -y
 clear
-
-read -p "$(tput setaf 6)Masukan versi ubuntu yang ingin anda install ?
+echo "$(tput setaf 6)"
+read -p "Masukan versi ubuntu yang ingin anda install ?
 $(tput setaf 3)
 1) v20.04.2
 
@@ -13,11 +13,11 @@ $(tput setaf 3)
 
 3) v21
 
-$(tput setaf 6)
- " versi
+" versi
 if [ "$versi" = "1" ] || [ "$versi" = "20.04.2" ] || [ "$versi" = "20.04" ];
 then
 
+echo "$(tput sgr 0)"
 wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v20.04.sh && chmod +x ubuntu-v20.04.sh && ./ubuntu-v20.04.sh
 
 elif [ "$versi" = "2" ] || [ "$versi" = "20.10" ];
@@ -34,7 +34,7 @@ fi
 
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
 then
- echo "
+ echo "$(tput setaf 6)
 Anda salah memasukan format. Masukan format sesuai pilihan di atas yang benar. 
 $(tput sgr 0)"
 
