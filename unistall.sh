@@ -5,7 +5,7 @@ echo "Memulai untuk mengunistall Ubuntu-v${V}"
 rm -rf ubuntu${V}-fs
 rm -rf ubuntu${V}-binds
 rm -rf ubuntu${V}.sh
-rm -rf startubuntu-v.sh
+rm -rf startubuntu-v${V}.sh
 rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
