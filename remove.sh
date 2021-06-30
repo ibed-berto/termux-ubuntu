@@ -1,16 +1,12 @@
 #!/bin/bash
 
-unistall="y"
-while [ $unistall = "y" ]
-do
+
 echo -n "Apakah anda yakin ingin mengunistall ubuntu ? Default Y (Y/N)\n"
-read yes;
-  if [ $yes = "y" ]||[ $yes = "Y" ]
+read yes
+  if [ $yes = "y" ]||[ $yes = "Y" ];
   then
-V="Masukan Versi ubuntu yang ingin anda Unistall. Ex :20.10 :"
-read -p "$V" versi
-if [ "${versi}" = "${versi}" ];
-then
+
+read -p "Masukan versi ubuntu yang ingin anda Unistall. Ex:20.10 : " V
 
 echo "Memulai untuk mengunistall Ubuntu-v${V}"
 rm -rf ubuntu${V}-fs
@@ -25,7 +21,6 @@ rm -rf unistall.sh
 rm -rf ubuntu${V}*
 echo "Unistall ubuntu v${V} selesai"
 
-fi
 
 elif [ $yes = "n" ]||[ $yes = "N" ]
   then
