@@ -218,7 +218,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
-command+=" -b ${cur}/${director}/proc/fakethings/stat:/proc/stat"
+command+=" -b ${cur}/${directory}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${directory}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${directory}/proc/fakethings/version:/proc/version"
 ## uncomment the following line to have access to the home directory of termux
@@ -245,7 +245,7 @@ mkdir -p ubuntu${version}-fs/var/tmp
 rm -rf ubuntu${version}-fs/usr/local/bin/*
 
 wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/.profile -O ubuntu21.04-fs/root/.profile.1
-cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $director/root/.profile.1
+cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $directory/root/.profile.1
 wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vnc -P ubuntu21.04-fs/usr/local/bin
 wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncpasswd -P ubuntu21.04-fs/usr/local/bin
 wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncserver-stop -P ubuntu21.04-fs/usr/local/bin
