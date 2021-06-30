@@ -9,8 +9,6 @@ read yes
 
 read -p "Masukan versi ubuntu yang ingin anda Unistall. Ex:20.10 : " V
 
-then
-
 if [ -f "ubuntu${V}-fs" ] || [ -f "ubuntu${V}* ];
 then
 
