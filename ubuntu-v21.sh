@@ -243,6 +243,28 @@ else
 fi
 EOM
 
+https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vnc
+mkdir -p ubuntu20-fs/var/tmp
+rm -rf ubuntu20-fs/usr/local/bin/*
+
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O ubuntu20-fs/root/.profile.1
+cat $folder/root/.profile.1 >> $folder/root/.profile && rm -rf $folder/root/.profile.1
+wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vnc -P ubuntu20-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P ubuntu20-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P ubuntu20-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P ubuntu20-fs/usr/local/bin
+
+chmod +x ubuntu20-fs/root/.bash_profile
+chmod +x ubuntu20-fs/root/.profile
+chmod +x ubuntu20-fs/usr/local/bin/vnc
+chmod +x ubuntu20-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu20-fs/usr/local/bin/vncserver-start
+chmod +x ubuntu20-fs/usr/local/bin/vncserver-stop
+touch $folder/root/.hushlogin
+echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
+echo "nameserver 1.1.1.1" > $folder/etc/resolv.conf
+chmod +x $folder/etc/resolv.conf
+
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
 termux-fix-shebang $bin
