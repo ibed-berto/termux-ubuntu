@@ -241,8 +241,8 @@ fi
 EOM
 
 
-mkdir -p ubuntu20-fs/var/tmp
-rm -rf ubuntu20-fs/usr/local/bin/*
+mkdir -p ubuntu${version}-fs/var/tmp
+rm -rf ubuntu${version}-fs/usr/local/bin/*
 
 wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/.profile -O ubuntu21.04-fs/root/.profile.1
 cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $director/root/.profile.1
