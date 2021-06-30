@@ -11,7 +11,7 @@ read -p "
 Masukan versi ubuntu yang ingin anda Unistall. 
 Ex:20.10 : " V
 
-if [ -f "startubuntu-v${V}" ];
+if [ -f "startubuntu-v${V}.sh" ];
 then
 
 echo "
@@ -29,7 +29,7 @@ rm -rf ubuntu${V}*
 echo "
 Unistall ubuntu v${V} selesai"
 
-elif [ ! -f "startubuntu-v${V}" ];
+elif [ ! -f "startubuntu-v${V}.sh" ];
 then
 echo "
 Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
@@ -41,7 +41,8 @@ elif [ $yes = "n" ]||[ $yes = "N" ];
       exit
   else
      echo "
-ERROR : Masukan jawaban yang benar sesuai perintah....!"
+ERROR :
+Masukan jawaban yang benar sesuai perintah....!"
      exit
   fi
 
