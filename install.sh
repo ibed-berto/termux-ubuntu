@@ -1,5 +1,8 @@
 #!/bin/bash
 
+pkg install proot -y
+pkg install wget -y
+
 read -p "Masukan versi ubuntu yang ingin anda install ?
 
 1) v20.04.2
