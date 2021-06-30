@@ -31,9 +31,10 @@ Unistall ubuntu v${V} selesai"
 
 elif [ ! -f "startubuntu-v${V}.sh" ];
 then
+
+rm -rf remove.sh
 echo "
 Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
-rm -rf remove.sh
 fi
 
 
