@@ -24,7 +24,7 @@ rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
-rm -rf unistall.sh
+rm -rf remove.sh
 rm -rf ubuntu${V}*
 echo "
 Unistall ubuntu v${V} selesai"
@@ -33,6 +33,7 @@ elif [ ! -f "startubuntu-v${V}.sh" ];
 then
 echo "
 Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
+rm -rf remove.sh
 fi
 
 
