@@ -199,7 +199,7 @@ if [ ! -f "${cur}/${directory}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-bin=startubuntu-v20.sh
+bin=startubuntu-v20.04.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 
 
