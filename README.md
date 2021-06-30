@@ -11,7 +11,7 @@
  
  ### PENGINSTALAN UBUNTU DI TERMUX
 
- **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu.sh**
+ **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v20.10.sh**
  
  **$ chmod +x ubuntu.sh**
  
@@ -23,4 +23,4 @@
 
  ### UNTUK UNISTALL UBUNTU 20.04
 
- **$ curl https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/unistall.sh | bash**
+ **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/remove.sh && chmod +x remove.sh && ./remove.sh**
