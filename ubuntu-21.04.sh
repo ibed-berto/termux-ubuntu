@@ -3,7 +3,7 @@
 time1="$( date +"%r" )"
 
 install1 () {
-directory=ubuntu20.04-fs
+directory=ubuntu21.04-fs
 version=21.04
 if [ -d "$directory" ];then
 first=1
@@ -199,7 +199,7 @@ if [ ! -f "${cur}/${directory}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-bin=startubuntu-v20.sh
+bin=startubuntu-v21.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 
 
@@ -262,7 +262,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan file bash telah be
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v20.sh\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v21.sh\n"
 rm ubuntu-${version}.sh 
 printf "\e[0m"
 
