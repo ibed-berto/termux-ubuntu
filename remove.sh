@@ -28,7 +28,7 @@ echo "Unistall ubuntu v${V} selesai"
 if [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
 then
 echo "Format yang anda masukan salah / versi ubuntu belum terinstall di perangkat anda."
-
+fi
 fi
 
 elif [ $yes = "n" ]||[ $yes = "N" ]
