@@ -3,7 +3,7 @@
 time1="$( date +"%r" )"
 
 install1 () {
-directory=ubuntuV20-fs
+directory=ubuntu20.04-fs
 version=21.04
 if [ -d "$directory" ];then
 first=1
@@ -60,7 +60,7 @@ cd $cur
 
 fi
 
-mkdir -p ubuntuV20-binds
+mkdir -p ubuntu${version}-binds
 mkdir -p ${directory}/proc/fakethings
 
 if [ ! -f "${cur}/${directory}/proc/fakethings/stat" ]; then
@@ -214,8 +214,8 @@ command+=" --kill-on-exit"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $directory"
-if [ -n "\$(ls -A ubuntuV20-binds)" ]; then
-    for f in ubuntuV20-binds/* ;do
+if [ -n "\$(ls -A ubuntu${version}-binds)" ]; then
+    for f in ubuntu${version}-binds/* ;do
       . \$f
     done
 fi
@@ -223,7 +223,7 @@ command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
 command+=" -b /data"
-command+=" -b ubuntuV20-fs/tmp:/dev/shm"
+command+=" -b ubuntu${version}-fs/tmp:/dev/shm"
 command+=" -b /proc/self/fd/2:/dev/stderr"
 command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
@@ -263,8 +263,27 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v20.sh\n"
-rm ubuntu-v20.sh 
+rm ubuntu-${version}.sh 
 printf "\e[0m"
 
 }
 
+if [ "$1" = "-y" ];then
+install1
+elif [ "$1" = "" ];then
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Apakah anda ingin mengintall Ubuntu-V21.04? Default Y [Y/n] "
+
+read cmd1
+if [ "$cmd1" = "y" ];then
+install1
+elif [ "$cmd1" = "Y" ];then
+install1
+else
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
+printf "\e[0m"
+exit
+fi
+else
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
+printf "\e[0m"
+fi
