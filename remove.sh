@@ -9,7 +9,7 @@ read yes
 
 read -p "Masukan versi ubuntu yang ingin anda Unistall. Ex:20.10 : " V
 
-if [ -f "ubuntu${V}-fs" ] || [ -f "ubuntu${V}* ];
+if [ -f "ubuntu${V}-fs" ] || [ -f "ubuntu${V}*" ];
 then
 
 echo "Memulai untuk mengunistall Ubuntu-v${V}"
@@ -25,7 +25,7 @@ rm -rf unistall.sh
 rm -rf ubuntu${V}*
 echo "Unistall ubuntu v${V} selesai"
 
-if [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}* ];
+if [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
 then
 echo "Format yang anda masukan salah / versi ubuntu belum terinstall di perangkat anda."
 
