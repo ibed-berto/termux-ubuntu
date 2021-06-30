@@ -4,6 +4,7 @@ time1="$( date +"%r" )"
 
 install1 () {
 directory=ubuntuV20-fs
+version=21.04
 if [ -d "$directory" ];then
 first=1
 printf "\x1b[38;5;214m[${time1}]\e[0m \e[32;5m[WARNING]:\e[0m \x1b[38;5;87m Lewatkan unduhan dan ekstrak file\n"
@@ -35,7 +36,7 @@ exit 1
 esac
 
 
-wget https://github.com/ibed-berto/termux-ubuntu/raw/master/ubuntuV20/focal-${ARCHITECTURE}.tar.gz -q -O ubuntu.tar.gz 
+wget http://cdimage.ubuntu.com/ubuntu-base/releases/${version}/release/ubuntu-base-${version}-base-${ARCHITECTURE}.tar.gz -q -O ubuntu.tar.gz 
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Download selesai!\n"
 
 fi
