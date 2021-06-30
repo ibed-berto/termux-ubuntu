@@ -3,7 +3,7 @@
 time1="$( date +"%r" )"
 
 install1 () {
-directory=ubuntu21.04-fs
+directory=ubuntu${version}-fs
 version=20.04.2
 if [ -d "$directory" ];then
 first=1
@@ -204,42 +204,32 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang,
 
 
 cat > $bin <<- EOM
-
 #!/bin/bash
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
 command="proot"
-command+=" --kill-on-exit"
+## uncomment following line if you are having FATAL: kernel too old message.
+#command+=" -k 4.14.81"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $directory"
-if [ -n "\$(ls -A ubuntu${version}-binds)" ]; then
-    for f in ubuntu${version}-binds/* ;do
+if [ -n "\$(ls -A ubuntu-binds)" ]; then
+    for f in ubuntu-binds/* ;do
       . \$f
     done
 fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
-command+=" -b /data"
-command+=" -b ubuntu${version}-fs/tmp:/dev/shm"
-command+=" -b /proc/self/fd/2:/dev/stderr"
-command+=" -b /proc/self/fd/1:/dev/stdout"
-command+=" -b /proc/self/fd/0:/dev/stdin"
-command+=" -b /dev/urandom:/dev/random"
-command+=" -b /proc/self/fd:/dev/fd"
-command+=" -b ${cur}/${directory}/proc/fakethings/stat:/proc/stat"
-command+=" -b ${cur}/${directory}/proc/fakethings/vmstat:/proc/vmstat"
-command+=" -b ${cur}/${directory}/proc/fakethings/version:/proc/version"
-command+=" -b /data/data/com.termux/files/home:/root"
+command+=" -b ubuntu-fs/tmp:/dev/shm"
+command+=" -b /data/data/com.termux"
 command+=" -b /:/host-rootfs"
 command+=" -b /sdcard"
 command+=" -b /storage"
 command+=" -b /mnt"
 command+=" -w /root"
 command+=" /usr/bin/env -i"
-command+=" MOZ_FAKE_NO_SANDBOX=1"
 command+=" HOME=/root"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
 command+=" TERM=\$TERM"
@@ -252,6 +242,7 @@ else
     \$command -c "\$com"
 fi
 EOM
+
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
 termux-fix-shebang $bin
@@ -263,7 +254,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v21.sh\n"
-rm ubuntu-v21.sh 
+rm ubuntu-${version}.sh 
 printf "\e[0m"
 
 }
