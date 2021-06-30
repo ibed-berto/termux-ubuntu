@@ -47,15 +47,6 @@ cd $directory
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Decompressing ubuntu rootfs, please wait...\n"
 tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
-printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1\n" > etc/resolv.conf
-stubs=()
-stubs+=('usr/bin/groups')
-for f in ${stubs[@]};do
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang menulis ulang stubs, please wait...\n"
-echo -e "#!/bin/sh\nexit" > "$f"
-done
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Stubs berhasil di tulis ulang!\n"
 cd $cur
 
 fi
@@ -202,15 +193,13 @@ fi
 bin=startubuntu-v21.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 
-
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
 command="proot"
-## uncomment following line if you are having FATAL: kernel too old message.
-#command+=" -k 4.14.81"
+command+=" --kill-on-exit"
 command+=" --link2symlink"
 command+=" -0"
 command+=" -r $directory"
@@ -222,14 +211,22 @@ fi
 command+=" -b /dev"
 command+=" -b /proc"
 command+=" -b /sys"
-command+=" -b ubuntu${version}-fs/tmp:/dev/shm"
-command+=" -b /data/data/com.termux"
-command+=" -b /:/host-rootfs"
+command+=" -b /data"
+command+=" -b ubuntu${version}-fs/root:/dev/shm"
+command+=" -b /proc/self/fd/2:/dev/stderr"
+command+=" -b /proc/self/fd/1:/dev/stdout"
+command+=" -b /proc/self/fd/0:/dev/stdin"
+command+=" -b /dev/urandom:/dev/random"
+command+=" -b /proc/self/fd:/dev/fd"
+command+=" -b ${cur}/${director}/proc/fakethings/stat:/proc/stat"
+command+=" -b ${cur}/${directory}/proc/fakethings/vmstat:/proc/vmstat"
+command+=" -b ${cur}/${directory}/proc/fakethings/version:/proc/version"
+## uncomment the following line to have access to the home directory of termux
+#command+=" -b /data/data/com.termux/files/home:/root"
 command+=" -b /sdcard"
-command+=" -b /storage"
-command+=" -b /mnt"
 command+=" -w /root"
 command+=" /usr/bin/env -i"
+command+=" MOZ_FAKE_NO_SANDBOX=1"
 command+=" HOME=/root"
 command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/games:/usr/local/games"
 command+=" TERM=\$TERM"
@@ -243,27 +240,27 @@ else
 fi
 EOM
 
-https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vnc
+
 mkdir -p ubuntu20-fs/var/tmp
 rm -rf ubuntu20-fs/usr/local/bin/*
 
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/.profile -O ubuntu20-fs/root/.profile.1
-cat $folder/root/.profile.1 >> $folder/root/.profile && rm -rf $folder/root/.profile.1
-wget -q https://github.com/ibed-berto/termux-ubuntu/blob/main/ubuntu/vnc -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncpasswd -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-stop -P ubuntu20-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Rootfs/Ubuntu19/vncserver-start -P ubuntu20-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/.profile -O ubuntu21.04-fs/root/.profile.1
+cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $director/root/.profile.1
+wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vnc -P ubuntu21.04-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncpasswd -P ubuntu21.04-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncserver-stop -P ubuntu21.04-fs/usr/local/bin
+wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncserver-start -P ubuntu21.04-fs/usr/local/bin
 
-chmod +x ubuntu20-fs/root/.bash_profile
-chmod +x ubuntu20-fs/root/.profile
-chmod +x ubuntu20-fs/usr/local/bin/vnc
-chmod +x ubuntu20-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-start
-chmod +x ubuntu20-fs/usr/local/bin/vncserver-stop
-touch $folder/root/.hushlogin
-echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
-echo "nameserver 1.1.1.1" > $folder/etc/resolv.conf
-chmod +x $folder/etc/resolv.conf
+chmod +x ubuntu21.04-fs/root/.bash_profile
+chmod +x ubuntu21.04-fs/root/.profile
+chmod +x ubuntu21.04-fs/usr/local/bin/vnc
+chmod +x ubuntu21.04-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu21.04-fs/usr/local/bin/vncserver-start
+chmod +x ubuntu21.04-fs/usr/local/bin/vncserver-stop
+touch $directory/root/.hushlogin
+echo "127.0.0.1 localhost localhost" > $directory/etc/hosts
+echo "nameserver 1.1.1.1" > $directory/etc/resolv.conf
+chmod +x $directory/etc/resolv.conf
 
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
