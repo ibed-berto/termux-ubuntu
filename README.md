@@ -23,4 +23,4 @@
 
  ### UNTUK UNISTALL UBUNTU 20.04
 
- **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/remove.sh && chmod +x remove.sh && ./remove.sh**
+ **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/remove.sh && chmod +x remove.sh && ./remove.sh**
