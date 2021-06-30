@@ -23,4 +23,4 @@
 
  ### UNTUK UNISTALL UBUNTU 20.04
 
- **curl https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/unistall.sh | bash **
+ **curl https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/unistall.sh | bash**
