@@ -1,7 +1,8 @@
 #!/bin/bash
 
 
-echo -n "Apakah anda yakin ingin mengunistall ubuntu ? Default Y (Y/N)\n"
+echo -n "Apakah anda yakin ingin mengunistall ubuntu ? 
+Default Y (Y/N)"
 read yes
   if [ $yes = "y" ]||[ $yes = "Y" ];
   then
@@ -31,4 +32,3 @@ elif [ $yes = "n" ]||[ $yes = "N" ]
      exit
   fi
 
-done
