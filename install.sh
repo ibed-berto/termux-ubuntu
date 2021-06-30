@@ -1,5 +1,6 @@
 #!/bin/bash
 
+pkg update && pkg upgrade -y
 pkg install proot -y
 pkg install wget -y
 
