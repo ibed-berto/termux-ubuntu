@@ -270,13 +270,13 @@ install1
 elif [ "$cmd1" = "Y" ];then
 install1
 else
-rm -rf ubuntu-v20.04.2.sh
+rm -rf ubuntu-v20.04.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
 printf "\e[0m"
 exit
 fi
 else
-rm -rf ubuntu-v20.04.2.sh
+rm -rf ubuntu-v20.04.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
 printf "\e[0m"
 fi
