@@ -254,7 +254,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v21.sh\n"
-rm ubuntu-${version}.sh 
+rm ubuntu-v${version}.sh 
 printf "\e[0m"
 
 }
