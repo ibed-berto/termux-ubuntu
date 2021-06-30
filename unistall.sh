@@ -12,4 +12,4 @@ rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
 rm -rf unistall.sh
 rm -rf ubuntu${V}*
-echo "Unistall ubuntu ${V} selesai"
+echo "Unistall ubuntu v${V} selesai"
