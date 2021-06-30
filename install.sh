@@ -34,7 +34,7 @@ fi
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
 then
 clear
-exi
+exit
 echo "Anda salah memasukan format. Masukan format sesuai pilihan di atas yang benar. "
 
 fi
@@ -42,4 +42,4 @@ if [ -f "startubuntu*" ] || [ -f "install.sh" ];
 then
 rm -rf install.sh
 clear
-fu
+fi
