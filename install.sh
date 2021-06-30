@@ -5,13 +5,6 @@ pkg install proot -y
 pkg install wget -y
 clear
 
-if [ -f "startubuntu*.sh" ];
-then
-rm -rf install.sh
-clear
-echo "Anda sudah menginstall Ubuntu. 
-Hapus Ubuntu yang lama untuk mengistall ubuntu yang baru. "
-fi
 
 read -p "Masukan versi ubuntu yang ingin anda install ?
 
@@ -42,7 +35,6 @@ fi
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
 then
 clear
-exit
 echo "Anda salah memasukan format. Masukan format sesuai pilihan di atas yang benar. "
 
 fi
