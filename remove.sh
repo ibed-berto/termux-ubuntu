@@ -7,12 +7,15 @@ read yes
   if [ $yes = "y" ]||[ $yes = "Y" ];
   then
 
-read -p "Masukan versi ubuntu yang ingin anda Unistall. Ex:20.10 : " V
+read -p "
+Masukan versi ubuntu yang ingin anda Unistall. 
+Ex:20.10 : " V
 
 if [ -f "ubuntu${V}-fs" ] || [ -f "ubuntu${V}*" ];
 then
 
-echo "Memulai untuk mengunistall Ubuntu-v${V}"
+echo "
+Memulai untuk mengunistall Ubuntu-v${V}"
 rm -rf ubuntu${V}-fs
 rm -rf ubuntu${V}-binds
 rm -rf ubuntu${V}.sh
@@ -23,11 +26,13 @@ rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
 rm -rf unistall.sh
 rm -rf ubuntu${V}*
-echo "Unistall ubuntu v${V} selesai"
+echo "
+Unistall ubuntu v${V} selesai"
 
 elif [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
 then
-echo "Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
+echo "
+Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
 fi
 
 
@@ -35,7 +40,8 @@ elif [ $yes = "n" ]||[ $yes = "N" ];
   then
       exit
   else
-     echo "ERROR : Masukan jawaban yang benar sesuai perintah....!"
+     echo "
+ERROR : Masukan jawaban yang benar sesuai perintah....!"
      exit
   fi
 
