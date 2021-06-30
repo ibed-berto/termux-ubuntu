@@ -2,6 +2,7 @@
 
 echo -n "Apakah anda yakin ingin mengunistall ubuntu ? 
 Default Y (Y/N)"
+
 read yes
   if [ $yes = "y" ]||[ $yes = "Y" ];
   then
@@ -26,16 +27,15 @@ echo "Unistall ubuntu v${V} selesai"
 
 elif [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
 then
-echo "Format yang anda masukan salah / versi ubuntu belum terinstall di perangkat anda."
+echo "Format yang anda masukan salah atau versi ubuntu belum terinstall di perangkat anda."
 fi
 
 
-elif [ $yes = "n" ]||[ $yes = "N" ]
+elif [ $yes = "n" ]||[ $yes = "N" ];
   then
       exit
   else
-     echo "ERROR : Wrong Input....!"
-     echo "\e[0m"
+     echo "ERROR : Masukan jawaban yang benar sesuai perintah....!"
      exit
   fi
 
