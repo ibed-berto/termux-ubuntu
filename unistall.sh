@@ -11,6 +11,6 @@ rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
-rm -rf UNI-ubuntu.sh
-rm -rf ${versi}*
+rm -rf unistall.sh
+rm -rf ubuntu21.04*
 echo "Done"
