@@ -262,7 +262,7 @@ printf "\e[0m"
 if [ "$1" = "-y" ];then
 install1
 elif [ "$1" = "" ];then
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Apakah anda ingin mengintall Ubuntu-V${version}? Default Y [Y/n] "
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Apakah anda yakin untuk mengintall ubuntu? Default Y [Y/n] "
 
 read cmd1
 if [ "$cmd1" = "y" ];then
@@ -270,11 +270,13 @@ install1
 elif [ "$cmd1" = "Y" ];then
 install1
 else
+rm -rf ubuntu-v20.04.2.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
 printf "\e[0m"
 exit
 fi
 else
+rm -rf ubuntu-v20.04.2.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;203m[ERROR]:\e[0m \x1b[38;5;87m Penginstalan di batalkan.\n"
 printf "\e[0m"
 fi
