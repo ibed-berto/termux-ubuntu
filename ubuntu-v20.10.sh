@@ -3,8 +3,8 @@
 time1="$( date +"%r" )"
 
 install1 () {
-directory=ubuntu21.04-fs
-version=21.04
+directory=ubuntu20.10-fs
+version=20.10
 if [ -d "$directory" ];then
 first=1
 printf "\x1b[38;5;214m[${time1}]\e[0m \e[32;5m[WARNING]:\e[0m \x1b[38;5;87m Lewatkan unduhan dan ekstrak file\n"
@@ -199,7 +199,7 @@ if [ ! -f "${cur}/${directory}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-bin=startubuntu-v21.sh
+bin=startubuntu-v20.10.sh
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang membuat script ulang, please wait...\n"
 
 
