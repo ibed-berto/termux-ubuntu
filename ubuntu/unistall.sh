@@ -2,15 +2,16 @@
 
 echo "Starting to uninstall, please be patient..."
 
-chmod 777 -R ubuntu20-fs
-rm -rf ubuntu20-fs
-rm -rf ubuntu20-binds
-rm -rf ubuntu20.sh
-rm -rf start-ubuntu20.sh
+versi=ubuntuV20
+chmod 777 -R ${versi}-fs
+rm -rf ${versi}-fs
+rm -rf ${versi}-binds
+rm -rf {versi}.sh
+rm -rf startubuntu-v20.sh
 rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
 rm -rf UNI-ubuntu.sh
-rm -rf ubuntu20*
+rm -rf ${versi}*
 echo "Done"
