@@ -2,11 +2,10 @@
 
 echo "Starting to uninstall, please be patient..."
 
-versi=ubuntuV20
-chmod 777 -R ${versi}-fs
-rm -rf ${versi}-fs
-rm -rf ${versi}-binds
-rm -rf {versi}.sh
+chmod 777 -R ubuntu21.04-fs
+rm -rf ubuntu21.04-fs
+rm -rf ubuntu21.04-binds
+rm -rf ubuntu21.04.sh
 rm -rf startubuntu-v20.sh
 rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
