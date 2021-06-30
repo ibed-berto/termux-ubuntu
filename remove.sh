@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo -n "Apakah anda yakin ingin mengunistall ubuntu ? 
 Default Y (Y/N)"
 read yes
@@ -25,11 +24,11 @@ rm -rf unistall.sh
 rm -rf ubuntu${V}*
 echo "Unistall ubuntu v${V} selesai"
 
-if [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
+elif [ ! -f "ubuntu${V}-fs" ] || [ ! -f "ubuntu${V}*" ];
 then
 echo "Format yang anda masukan salah / versi ubuntu belum terinstall di perangkat anda."
 fi
-fi
+
 
 elif [ $yes = "n" ]||[ $yes = "N" ]
   then
