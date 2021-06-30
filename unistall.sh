@@ -1,16 +1,15 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 
-echo "Starting to uninstall, please be patient..."
-
-chmod 777 -R ubuntu21.04-fs
-rm -rf ubuntu21.04-fs
-rm -rf ubuntu21.04-binds
-rm -rf ubuntu21.04.sh
-rm -rf startubuntu-v20.sh
+V=20.10
+echo "Memulai untuk mengunistall Ubuntu-v${V}"
+rm -rf ubuntu${V}-fs
+rm -rf ubuntu${V}-binds
+rm -rf ubuntu${V}.sh
+rm -rf startubuntu-v.sh
 rm -rf de-apt-xfce4.sh
 rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
 rm -rf unistall.sh
-rm -rf ubuntu21.04*
-echo "Done"
+rm -rf ubuntu${V}*
+echo "Unistall ubuntu ${V} selesai"
