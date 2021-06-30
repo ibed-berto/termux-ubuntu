@@ -20,3 +20,7 @@
  ### UNTUK MENJALANKAN UBUNTU DI TERMUX
 
  **$./startubuntu-v20.sh**
+
+ ### UNTUK UNISTALL UBUNTU 20.04
+
+ **curl https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/unistall.sh | bash **
