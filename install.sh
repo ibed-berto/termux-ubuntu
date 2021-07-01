@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 pkg update && pkg upgrade -y
 pkg install proot -y
 pkg install wget -y
@@ -7,6 +8,16 @@ clear
 
 v1=20.10
 v2=20.04
+
+if [ -f "install.sh" ] ;
+then 
+echo "Mengunduh ulang install.sh . 
+Silahkan tunggu ..."
+rm install.sh
+wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/install.sh && chmod +x install.sh && ./install.sh
+echo "Pengunduhan Selesai "
+fi
+
 if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
 then
 echo "
@@ -51,7 +62,8 @@ fi
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
 then
 clear
-echo "Anda salah memasukan format. Masukan format sesuai pilihan di atas yang benar. "
+echo "Format yang anda masukan salah. 
+Masukan format sesuai pilihan di atas dengan benar. "
 
 fi
 
