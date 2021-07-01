@@ -11,11 +11,10 @@ v2=20.04
 
 if [ -f "install.sh" ] ;
 then 
-echo "Mengunduh ulang install.sh . 
+echo "Memperbaiki ulang file install.sh . 
 Silahkan tunggu ..."
 rm install.sh
-wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/install.sh && chmod +x install.sh && ./install.sh
-echo "Pengunduhan Selesai "
+mv install.sh.* install.sh
 fi
 
 if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
