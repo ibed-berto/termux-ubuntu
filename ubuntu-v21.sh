@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+clear
 time1="$( date +"%r" )"
 
 install1 () {
