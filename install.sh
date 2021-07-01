@@ -11,9 +11,6 @@ v2=20.04
 
 if [ -f "install.sh" ] ;
 then 
-echo "Memperbaiki ulang file install.sh . 
-Silahkan tunggu ..."
-rm install.sh
 mv install.sh.* install.sh
 chmod +x install.sh
 fi
