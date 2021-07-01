@@ -1,13 +1,5 @@
 #!/bin/bash
 
-pkg update && pkg upgrade -y
-pkg install proot -y
-pkg install wget -y
-clear
-
-v1=20.10
-v2=20.04
-
 if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
 then
 echo "
@@ -16,6 +8,14 @@ Silahkan hapus atau install ulang untuk melanjutkan.
 "
 exit
 fi
+
+pkg update && pkg upgrade -y
+pkg install proot -y
+pkg install wget -y
+clear
+
+v1=20.10
+v2=20.04
 
 if [ ! -f "startubuntu-v${v1}.sh" ] || [ ! -f "startubuntu-v${v2}.sh" ] || [ ! -f "startubuntu*.sh" ];
 then
