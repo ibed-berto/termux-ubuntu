@@ -5,7 +5,13 @@ pkg install proot -y
 pkg install wget -y
 clear
 
-
+if [ -f "startubuntu*.sh" ];
+then
+rm -rf install.sh
+echo "Ubuntu sudah terinstall di perangkat anda. Silahkan hapus atau install ulang. "
+fi
+if [ ! -f "startubuntu*.sh" ];
+then
 read -p "Masukan versi ubuntu yang ingin anda install ?
 
 1) v20.04.2
@@ -30,6 +36,7 @@ then
 
 wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v21.sh && chmod +x ubuntu-v21.sh && ./ubuntu-v21.sh
 
+fi
 fi
 
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
