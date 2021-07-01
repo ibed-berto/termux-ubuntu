@@ -11,7 +11,8 @@ if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "sta
 then
 echo "
 Sudah ada ubuntu yang terinstall di perangkat anda. 
-Silahkan hapus atau install ulang untuk melanjutkan. "
+Silahkan hapus atau install ulang untuk melanjutkan. 
+"
 exit
 fi
 
