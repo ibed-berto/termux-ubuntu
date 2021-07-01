@@ -49,11 +49,15 @@ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v21.
 fi
 fi
 
+exit
+
 if [ ! "$versi" = "1" ] || [ ! "$versi" = "20.04.2" ] || [ ! "$versi" = "20.04" ] || [ ! "$versi" = "3" ] || [ ! "$versi" = "21" ] || [ ! "$versi" = "2" ] || [ ! "$versi" = "20.10" ]; 
 then
 clear
 echo "Format yang anda masukan salah. 
-Masukan format sesuai pilihan di atas dengan benar. "
+Masukan format sesuai pilihan di atas dengan benar. 
+"
+exit
 
 fi
 
