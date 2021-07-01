@@ -8,7 +8,7 @@ read yes
   then
 
 read -p "
-Masukan versi ubuntu yang ingin anda Unistall. 
+Masukan versi ubuntu lengkap dengan angka yang ingin anda Unistall. 
 Ex:20.10 : " V
 
 if [ -f "startubuntu-v${V}.sh" ];
