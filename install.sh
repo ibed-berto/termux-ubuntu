@@ -7,13 +7,15 @@ clear
 
 v1=20.10
 v2=20.04
-if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ];
+if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
 then
+echo "
+Sudah ada ubuntu yang terinstall di perangkat anda. 
+Silahkan hapus atau install ulang untuk melanjutkan. "
 exit
-echo "Sudah ada ubuntu yang terinstall di perangkat anda. Silahkan hapus atau install ulang untuk melanjutkan. "
 fi
 
-if [ ! -f "startubuntu-v${v1}.sh" ] || [ ! -f "startubuntu-v${v2}.sh" ];
+if [ ! -f "startubuntu-v${v1}.sh" ] || [ ! -f "startubuntu-v${v2}.sh" ] || [ ! -f "startubuntu*.sh" ];
 then
 
 read -p "Masukan versi ubuntu yang ingin anda install ?
