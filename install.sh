@@ -15,6 +15,7 @@ echo "Memperbaiki ulang file install.sh .
 Silahkan tunggu ..."
 rm install.sh
 mv install.sh.* install.sh
+chmod +x install.sh
 fi
 
 if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
