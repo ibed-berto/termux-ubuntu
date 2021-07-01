@@ -41,12 +41,23 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Download selesai!\n"
 
 fi
 
+
 cur=`pwd`
 mkdir -p $directory
 cd $directory
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Decompressing ubuntu rootfs, please wait...\n"
 tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Ubuntu rootfs telah berhasil di decompressed!\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Memperbaiki resolv.conf, Jaga koneksi internet anda\n"
+printf "127.0.0.1 localhost localhost" > /etc/hosts
+printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\nnameserver 1.1.1.1\n" > etc/resolv.conf
+stubs=()
+stubs+=('usr/bin/groups')
+for f in ${stubs[@]};do
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Sedang menulis ulang stubs, please wait...\n"
+echo -e "#!/bin/sh\nexit" > "$f"
+done
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Stubs berhasil di tulis ulang!\n"
 cd $cur
 
 fi
@@ -241,27 +252,6 @@ fi
 EOM
 
 
-mkdir -p ubuntu${version}-fs/var/tmp
-rm -rf ubuntu${version}-fs/usr/local/bin/*
-
-wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/.profile -O ubuntu21.04-fs/root/.profile.1
-cat $directory/root/.profile.1 >> $directory/root/.profile && rm -rf $directory/root/.profile.1
-wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vnc -P ubuntu21.04-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncpasswd -P ubuntu21.04-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncserver-stop -P ubuntu21.04-fs/usr/local/bin
-wget -q https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu/vncserver-start -P ubuntu21.04-fs/usr/local/bin
-
-chmod +x ubuntu21.04-fs/root/.bash_profile
-chmod +x ubuntu21.04-fs/root/.profile
-chmod +x ubuntu21.04-fs/usr/local/bin/vnc
-chmod +x ubuntu21.04-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu21.04-fs/usr/local/bin/vncserver-start
-chmod +x ubuntu21.04-fs/usr/local/bin/vncserver-stop
-touch $directory/root/.hushlogin
-echo "127.0.0.1 localhost localhost" > $directory/etc/hosts
-echo "nameserver 1.1.1.1" > $directory/etc/resolv.conf
-chmod +x $directory/etc/resolv.conf
-
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan script telah selesai!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Sedang memperbaiki shebang. please wait...\n"
 termux-fix-shebang $bin
@@ -272,7 +262,7 @@ printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembuatan file bash telah be
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Membersihkan berkas tidak di gunakan please wait...\n"
 rm ubuntu.tar.gz -rf
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Pembersihan berkas tidak di gunakan selesai!\n"
-printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./startubuntu-v21.sh\n"
+printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;87m Penginstalan ubuntu selesai! Untuk memulai tekan \e[32;5m./${bin}\n"
 rm ubuntu-v21.sh 
 printf "\e[0m"
 
