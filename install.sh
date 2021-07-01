@@ -1,6 +1,5 @@
 #!/bin/bash
 
-clear
 pkg update && pkg upgrade -y
 pkg install proot -y
 pkg install wget -y
@@ -8,12 +7,6 @@ clear
 
 v1=20.10
 v2=20.04
-
-if [ -f "install.sh" ] ;
-then 
-mv install.sh.* install.sh
-chmod +x install.sh
-fi
 
 if [ -f "startubuntu-v${v1}.sh" ] || [ -f "startubuntu-v${v2}.sh" ] || [ -f "startubuntu*.sh" ];
 then
