@@ -30,14 +30,6 @@ read -p "Masukan versi ubuntu yang ingin anda install ?
 
 " versi
 
-if [ -f "startubuntu-v${versi}.sh" ];
-then
-exit
-echo "Ubuntu sudah terinstall di perangkat anda. Silahkan hapus atau install ulang. "
-fi
-if [ ! -f "startubuntu-v${versi}.sh" ];
-then
-
 if [ "$versi" = "1" ] || [ "$versi" = "20.04.2" ] || [ "$versi" = "20.04" ];
 then
 
