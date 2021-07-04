@@ -2,8 +2,8 @@
 
 
 cek=/data/data/com.termux/files
-
-if [ -f "$cek/home/startubuntu-v${v1}.sh" ] || [ -f "$cek/home/startubuntu-v${v2}.sh" ] || [ -f "$cek/home/startubuntu*.sh" ];
+ada="sources.list"
+if [ -f "$ada" ] || [ -f "/etc/apt/sources.list" ];
 then
 echo "
 Sudah ada ubuntu yang terinstall di perangkat anda. 
@@ -30,19 +30,30 @@ clear
 v1=20.10
 v2=20.04
 
-if [ ! -f "startubuntu-v${v1}.sh" ] || [ ! -f "startubuntu-v${v2}.sh" ] || [ ! -f "startubuntu*.sh" ];
+if [ ! -f "$ada" ] || [ ! -f "/etc/apt/sources.list" ];
 then
 
-read -p "Masukan versi ubuntu yang ingin anda install ?
-1) v20.04.2
-2) v20.10
-3) v21
+read -p "Pilih versi ubuntu yang ingin anda install ?
+1) Versi 12.04               4) Versi 18.04               7) Versi 21.04
+2) Versi 14.04               5) Versi 20.04
+3) Versi 16.04               6) Versi 20.10
 " versi
 
-if [ "$versi" = "1" ] || [ "$versi" = "20.04.2" ] || [ "$versi" = "20.04" ];
+clear 
+if [ "$versi" = "1" ] || [ "$versi" = "12.04" ] || [ "$versi" = "12" ];
 then
 
-wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v20.04.sh && chmod +x ubuntu-v20.04.sh && ./ubuntu-v20.04.sh
+echo -e "\x1b[32m\033[1m [ Berikut ini untuk varian ubuntu versi 12.04 : ]"
+echo -e "\x1b[32m\033[1m [ 
+1) Versi 12.04.4 
+2) Versi 12.04.5 
+]
+
+read -p "Silahkan masukan jenis varian ubuntu versi 12.04 yang ingin anda install : " 12.04
+if  [ "$12.04" = "1" ] || [ "$12.04" = "12.04.4" ];
+then 
+
+
 exit
 elif [ "$versi" = "2" ] || [ "$versi" = "20.10" ];
 then
