@@ -27,9 +27,6 @@ fi
 
 clear
 
-v1=20.10
-v2=20.04
-
 if [ ! -f "$ada" ] || [ ! -f "/etc/apt/sources.list" ];
 then
 
@@ -38,6 +35,7 @@ read -p "Pilih versi ubuntu yang ingin anda install ?
 2) Versi 14.04               5) Versi 20.04
 3) Versi 16.04               6) Versi 20.10
 " versi
+fi
 
 clear 
 if [ "$versi" = "1" ] || [ "$versi" = "12.04" ] || [ "$versi" = "12" ];
@@ -48,24 +46,17 @@ echo -e "\x1b[32m\033[1m [
 1) Versi 12.04.4 
 2) Versi 12.04.5 
 ]
+fi
 
+a=".4"
+b=".5"
 read -p "Silahkan masukan jenis varian ubuntu versi 12.04 yang ingin anda install : " 12.04
 if  [ "$12.04" = "1" ] || [ "$12.04" = "12.04.4" ];
 then 
-
-
-exit
-elif [ "$versi" = "2" ] || [ "$versi" = "20.10" ];
-then
-
-wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v20.10.sh && chmod +x ubuntu-v20.10.sh && ./ubuntu-v20.10.sh
-exit
-elif [ "$versi" = "3" ] || [ "$versi" = "21" ];
-then
-
-wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-v21.sh && chmod +x ubuntu-v21.sh && ./ubuntu-v21.sh
-exit
-fi
+echo "11.04"
+elif [ "$12.04" = "2" ] || [ "$12.04" = "12.04.05" ];
+then 
+echo "12.05"
 fi
 
 
