@@ -1,4 +1,3 @@
-
 #!/data/data/com.termux/files/usr/bin/bash
 
 
@@ -84,7 +83,7 @@ termux-fix-shebang $bin
 chmod +x $bin
 rm ubuntu.tar.gz -rf
 echo -e "\x1b[32m\033[1mPenginstalan ubuntu selesai! Untuk memulai tekan \n\n\e[1;33m./${bin}\n"
-rm ubuntu-v${version}.sh
+rm ubuntu-termux.sh
 
       }
 
