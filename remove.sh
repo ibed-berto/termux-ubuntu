@@ -25,7 +25,8 @@ rm -rf de-apt-mate.sh
 rm -rf de-apt-lxqt.sh
 rm -rf de-apt-lxde.sh
 rm -rf remove.sh
-rm -rf ubuntu${V}*
+rm -rf start*.sh
+rm -rf ubuntu*
 echo "
 Unistall ubuntu v${V} selesai"
 
