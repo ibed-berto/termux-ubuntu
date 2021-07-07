@@ -3,7 +3,7 @@
  
  ### PENGINSTALAN UBUNTU DI TERMUX
 
- **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/install.sh && chmod +x install.sh && ./install.sh**
+ **$ wget https://raw.githubusercontent.com/ibed-berto/termux-ubuntu/main/ubuntu-termux.sh && chmod +x ubuntu-termux.sh && ./ubuntu-termux.sh**
 
  ### UNTUK UNISTALL UBUNTU
 
