@@ -87,7 +87,7 @@ rm ubuntu-termux.sh
 
       }
 
-#pkg update && pkg upgrade -y
+pkg update && pkg upgrade -y
 echo -e "\x1b[32m\033[1mSedang mempersiapkan file pelengkap. "
 if [ ! -f "$cek/usr/bin/wget" ] ; then
          echo -e "\x1b[32m\033[1mSedang menginstall wget" && sleep 1
