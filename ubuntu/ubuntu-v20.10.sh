@@ -87,13 +87,13 @@ fi
 
 
 if [ ! -f "${cur}/${directory}/proc/fakethings/version" ]; then
-	cat <<- E0F > "${cur}/${directory}/proc/fakethings/version"
+	cat <<- EOF > "${cur}/${directory}/proc/fakethings/version"
 	Ubuntu version 20.04 (ibed-berto) (Made by = "https://github.com/ibed-berto"(Ibed-berto /proc/version) ) 
 	EOF
 fi
 
 if [ ! -f "${cur}/${directory}/proc/fakethings/vmstat" ]; then
-	cat <<- E0F > "${cur}/${directory}/proc/fakethings/vmstat"
+	cat <<- EOF > "${cur}/${directory}/proc/fakethings/vmstat"
 	nr_free_pages 15717
 	nr_zone_inactive_anon 87325
 	nr_zone_active_anon 259521
