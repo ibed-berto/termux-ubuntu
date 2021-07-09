@@ -65,7 +65,7 @@ mkdir -p ubuntu${version}-binds
 mkdir -p ${directory}/proc/fakethings
 
 if [ ! -f "${cur}/${directory}/proc/fakethings/stat" ]; then
-	cat <<- EOF > "${cur}/${directory}/proc/fakethings/stat"
+	cat <<- E0F > "${cur}/${directory}/proc/fakethings/stat"
 	cpu  5502487 1417100 4379831 62829678 354709 539972 363929 0 0 0
 	cpu0 611411 171363 667442 7404799 61301 253898 205544 0 0 0
 	cpu1 660993 192673 571402 7853047 39647 49434 29179 0 0 0
